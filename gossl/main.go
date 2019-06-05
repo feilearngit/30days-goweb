@@ -4,6 +4,7 @@ import (
 	"encoding/base64"
 	json2 "encoding/json"
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"net/http"
 	"time"
@@ -148,13 +149,22 @@ func showMessage(w http.ResponseWriter, r *http.Request){
 	}
 }
 
+func _template(w http.ResponseWriter, r *http.Request){
+	t, _ := template.ParseFiles("temp.html")
+	//msg := []byte("Go Web Programming")
+
+	//msg = append(msg, []byte("Hello"))
+
+	t.Execute(w, "Hello World!")
+}
+
 func main() {
 	//handler := MyHandler{}
 	server := http.Server{
 		Addr: "127.0.0.1:8080",
 		//Handler: &handler,
 	}
-
+	http.HandleFunc("/template", _template)
 	http.HandleFunc("/set_message", setMessage)
 	http.HandleFunc("/show_message", showMessage)
 	http.HandleFunc("/set_cookie", setCookie)
