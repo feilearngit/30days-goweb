@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"fmt"
 	"os"
+	"reflect"
 	"strconv"
 )
 
@@ -26,6 +27,7 @@ func main() {
 		Post{Id: 3, Content: "Hola Mundo!", Author: "feifei"},
 		Post{Id: 4, Content: "Greetings Earthlings!", Author: "feifei"},
 	}
+	fmt.Printf("allPosts type is %v\n", reflect.TypeOf(allPosts))
 
 	writer := csv.NewWriter(csvFile)
 	for _, post := range allPosts {
