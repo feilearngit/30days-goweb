@@ -1,5 +1,14 @@
 package main
 
+/*
+包前是下划线_：
+当导入一个包时，该包下的文件里所有init函数都会被执行，但是有时我们仅仅需要使用init函数而已并不希望把整个包导入（不使用包里的其他函数）
+包前是点.：
+import（.“fmt”）
+这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的fmt.Println("hello world")可以省略的写成Println("hello world")
+*/
+
+
 import (
 	"database/sql"
 	"fmt"
